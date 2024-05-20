@@ -93,6 +93,128 @@ body{
 
     font-size: 20px;
     font-weight: 700;
-    width: 200px;
+    width: 180px;
     height: 80px;
+}
+
+.form-page{
+    position: relative;
+}
+
+.form-container{
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px var(--rosa-primario) dotted; */
+    padding: 15px;
+
+    max-width: 100%;
+    min-height: 98vh;
+
+    h3{
+        font-weight: 800;
+        font-size: 35px;
+        margin: 30px 0 10px 0;
+    }
+    h4{
+        font-weight: 400;
+        font-size: 22px;
+        margin: 0 0 50px 0;
+    }
+}
+
+.formulario{
+    display: flex;
+    flex-direction: row;
+    padding: 50px 20px 50px 20px;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    border: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+.r-form{
+    width: 45%;
+}
+
+.separator{
+    background-color: var(--blanco-primario);
+    height: 1000px;
+    width: 5px;
+    border-radius: 10px;
+    margin: 0 60px 0 60px;
+}
+
+.l-form{
+    width: 45%;
+}
+
+.radio-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.pregunta{
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+.card-answer{
+    color: var(--background);
+    font-size: 13px;
+    background-color: var(--blanco-primario);
+    border-radius: 15px;
+
+    padding: 15px;
+    margin: 10px;
+    width: 100px;
+}
+
+.get-analysis{
+    position: absolute;
+    bottom: 0px;
+
+    color: var(--blanco-primario);
+    background-color: var(--rosa-primario);
+    border: none;
+    border-radius: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+    width: 150px;
+    height: 60px;
+}
+
+.blob-b{
+    z-index: 0;
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    opacity: 0.5;
+    filter: blur(50px);
+
+    top: -150px;
+    left: -100px;
+}
+
+.blob-p{
+    z-index: 0;
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    opacity: 0.5;
+    filter: blur(50px);
+
+    bottom: -300px;
+    right: -200px;
 }
