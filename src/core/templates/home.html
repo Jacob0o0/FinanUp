@@ -24,10 +24,10 @@
             <button class="primary-btn">Empieza ahora</button>
         </section>
         <aside class="right-side">
-            <img src="static/imgs/9.jpg" alt="FinanUp">
+            <img src="../static/imgs/9.jpg" alt="FinanUp">
         </aside>
         <div class="water-mark">
-            <img src="static/imgs/10.jpg" alt="FinanUp">
+            <img src="../static/imgs/10.jpg" alt="FinanUp">
         </div>
     </section>
 
@@ -49,7 +49,8 @@
         <section class="form-container">
             <h3>¿Qué tipo de inversor eres?</h3>
             <h4>Contesta la encuesta</h4>
-            <form method="post" action="" class="formulario">
+            <form method="post" action="{% url 'investor_view' %}" class="formulario">
+                {% csrf_token %}
                 <div class="r-form">
                     {% for key, value in preguntas_dictL.items %}
                     <label class="pregunta" for="pregunta{{ forloop.counter }}">{{ key }}</label>
@@ -79,8 +80,8 @@
                     {% endwith %}
                     {% endfor %}
                 </div>
+                <button class="get-analysis" type="submit">Generar perfil</button>
             </form>
-            <button class="get-analysis" type="submit">Generar perfil</button>
         </section>
         <div class="blob-p">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" background-color="transparent">
@@ -98,5 +99,37 @@
         </div>
     </section>
 </main>
+
+{% block invest_content %}
+{% endblock invest_content%}
+
+<script>
+    document.querySelector('.formulario').addEventListener('submit', function(event) {
+        let allAnswered = true;
+        const questions = document.querySelectorAll('.pregunta');
+        
+        questions.forEach(question => {
+            const questionId = question.getAttribute('for');
+            const options = document.querySelectorAll(`input[name="${questionId}"]`);
+            let answered = false;
+            options.forEach(option => {
+                if (option.checked) {
+                    answered = true;
+                }
+            });
+            if (!answered) {
+                allAnswered = false;
+                question.style.color = 'red'; // Highlight the unanswered question
+            } else {
+                question.style.color = ''; // Reset the color if answered
+            }
+        });
+
+        if (!allAnswered) {
+            event.preventDefault();
+            alert('Por favor, contesta todas las preguntas.');
+        }
+    });
+</script>
 
 {% endblock content %}

@@ -19,9 +19,11 @@ from django.urls import path, include
 
 from core.views import (
     index,
+    investor_view,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
+    path('', index),
+    path('investor/', investor_view, name='investor_view')
 ]
