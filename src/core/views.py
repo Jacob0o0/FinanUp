@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django import forms
 from django.http import HttpResponse
 
+from core.static.python.calc_perfil import calcular_puntos
+from core.static.python.calc_perfil import asignar_perfil
+
 # Create your views here.
 def index(request):
     context = {}
@@ -182,11 +185,16 @@ def investor_view(request):
         for key in data:
             if key.startswith('pregunta'):
                 resultados[key] = data[key]
-        # Puedes hacer lo que necesites con los datos aquí
-        # Por ejemplo, guardar en la base de datos, analizar los datos, etc.
+
         context['resultados'] = resultados
 
-        context['type_investor'] = 'Moderado'
+        # Obtener los valores del diccionario y convertirlos en una lista
+        valores = list(context['resultados'].values())
+        puntos = calcular_puntos(valores)
+  
+        perfil = asignar_perfil(valores, puntos)
+
+        context['type_investor'] = perfil
 
         return render(request, 'investor.html', context)
     else:
