@@ -1,14 +1,14 @@
-{% extends 'home.html' %}
+{% extends 'base.html' %}
 
-{% block invest_content %}
+{% block content %}
 
 
 <section class="investor-page">
-
     <section class="container-investor">
         <p>Inversionista tipo</p>
         <h5>{{type_investor}}</h5>
-        <form method="post" action="{% url 'investor_view' %}" class="container-options">
+        <form method="post" action="{% url 'get_pdf' %}" class="container-options">
+            {% csrf_token %}
             <div class="top-options">
                 <div class="options">
                     <div class="text-options">
@@ -16,28 +16,20 @@
                     </div>
                     <div class="logos-empresas">
                         <img src="../static/imgs/logo-APPL.jpg" alt="logo-APPL">
-                        <img src="../static/imgs/logo-APPL.jpg" alt="logo-APPL">
-                        <img src="../static/imgs/logo-APPL.jpg" alt="logo-APPL">
-                        <img src="../static/imgs/logo-APPL.jpg" alt="logo-APPL">
+                        <img src="../static/imgs/logo-IBM.jpg" alt="logo-APPL">
+                        <img src="../static/imgs/logo-Google.png" alt="logo-APPL">
+                        <img src="../static/imgs/logo-WALMART.png" alt="logo-APPL">
                     </div>
                 </div>
                 <div class="capital">
                     <label for="capital">Capital a invertir:</label>
                     <input type="number" id="capital" name="capital" min="1000"/>
                 </div>
-            </div>
-            <div class="companies">
-                <div class="company-row">
-                    <img src="../static/imgs/logo-APPL.jpg" alt="logo-APPL">
-                    <p class="nom-compania">Apple</p>
-                    <label for="desde" class="date-label">de:</label>
-                    <input type="date" id="desde" name="desde">
-                    <label for="hasta" class="date-label">a:</label>
-                    <input type="date" id="hasta" name="hasta">
-                    <button class="trash">X</button>
+                <div class="capital">
+                    <label for="num_empresas">Numero de empresas a invertir:</label>
+                    <input type="number" id="num_empresas" name="num_empresas" min="5"/>
                 </div>
             </div>
-            <button class="plus-comp">+</button>
             <div class="center">
                 <button class="download">Descargar análisis</button>
             </div>
@@ -99,4 +91,4 @@
     </div>
 </section>
 
-{% endblock invest_content %}
+{% endblock content %}

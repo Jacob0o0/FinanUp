@@ -20,10 +20,12 @@ from django.urls import path, include
 from core.views import (
     index,
     investor_view,
+    get_pdf
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('investor/', investor_view, name='investor_view')
+    path('investor/', investor_view, name='investor_view'),
+    path('investor/get_pdf', get_pdf, name='get_pdf')
 ]

@@ -217,7 +217,9 @@ body{
 }
 
 .investor-page{
-    min-height: 98vh;
+    z-index: 2;
+    /* min-height: 40vh; */
+    margin-top: 200px;
     position: relative;
     display: flex;
     align-items: center;
@@ -261,6 +263,8 @@ body{
     flex-direction: column;
     font-size: 20px;
     font-weight: 500;
+
+    margin: 15px;
 
     label{
         padding-bottom: 20px;
@@ -376,6 +380,7 @@ body{
 }
 
 .thanks-page{
+    z-index: 1;
     position: relative;
 
     height: 75vh;
@@ -386,6 +391,7 @@ body{
     justify-content: center;
 
     .blob-left{
+        z-index: 0;
         width: 700px;
         position: absolute;
         left: -200px;
@@ -394,9 +400,10 @@ body{
         filter: blur(50px);
     }
     .blob-right{
+        z-index: 0;
         width: 700px;
         position: absolute;
-        top: -200px;
+        top: 300px;
         right: -300px;
         opacity: 0.5;
         filter: blur(50px);
@@ -448,6 +455,7 @@ body{
 }
 
 .bottom{
+    z-index: 1;
     margin-left: auto;
     display: flex;
     flex-direction: column;
